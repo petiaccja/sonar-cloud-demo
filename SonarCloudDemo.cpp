@@ -17,7 +17,7 @@ public:
 	Player(Point position, Health health) : position(position), health(health) {}
 
 	int GetCurrentHealth() { return health.current; }
-	int SetCurrentHealth(int currentHealth) { return health.current = std::min(std::max(0, currentHealth), health.maximum); }
+	void SetCurrentHealth(int currentHealth) { health.current = std::min(std::max(0, currentHealth), health.maximum); }
 	int GetMaximumHealth() { return health.current; }
 
 	Point GetPosition() const { return position; }
