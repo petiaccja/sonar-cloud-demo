@@ -2,7 +2,8 @@
 #include <iostream>
 
 struct Point {
-	float x, y;
+	float x;
+	float y;
 };
 
 struct Health {
@@ -15,13 +16,10 @@ public:
 	Player() = default;
 	Player(Point position, Health health) : position(position), health(health) {}
 
-	// Health
 	int GetCurrentHealth() { return health.current; }
 	int SetCurrentHealth(int currentHealth) { return health.current = std::min(std::max(0, currentHealth), health.maximum); }
-
 	int GetMaximumHealth() { return health.current; }
 
-	// Position
 	Point GetPosition() const { return position; }
 	void SetPosition(Point position) const { position = position; }
 
@@ -43,14 +41,17 @@ void Damage(Player& player, int distance) {
 
 void Move(Player& player, int stepX, int stepY) {
 	Point pos = player.GetPosition();
-	pos.x += stepX;
-	pos.x += stepY;
+	auto& x = pos.x, y = pos.y;
+	x += stepX;
+	y += stepY;
 	player.SetPosition(pos);
 }
 
 int main() {
 	Player player{ { 2, 7 }, { 100, 100 } };
 	Damage(player, 3);
-
+	Move(player, 2, 3);
+	std::cout << "Health:   " << player.GetCurrentHealth() << std::endl;
+	std::cout << "Position: " << "(" << player.GetPosition().x << ", " << player.GetPosition().y << ")" << std::endl;
 	return 0;
 }
