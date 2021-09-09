@@ -36,7 +36,7 @@ void Damage(Player& player, int distance) {
 	}
 	else {
 		const int health = player.GetCurrentHealth();
-		const int damage = health / distance;
+		const int damage = health / (1 + distance);
 		player.SetCurrentHealth(health - damage);
 	}
 }
