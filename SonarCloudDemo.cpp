@@ -47,6 +47,8 @@ void Move(Player& player, int stepX, int stepY) {
 	player.SetPosition(pos);
 }
 
+// change
+
 int main() {
 	Player player{ { 2, 7 }, { 100, 100 } };
 	Damage(player, 3);
